@@ -6,24 +6,28 @@ $(document).ready(function() {
 
 function showTweetInfo(tweet){
 
-	$('.tweetContent').text(tweet);
-	console.log(tweet);
+	$('.tweetName').text(tweet.user.name);
+	$('.tweetTag').text("@" + tweet.user.screen_name);
+	$('.tweetContent').text(tweet.text);
+	$('.tweetDateTime').text(tweet.created_at);
+	$('.userIcon').attr('src', tweet.user.profile_image_url);
 
 }
 
 function start(data) {
+	
 	var i = 0;
 		
 	function loopTweets(data){
 
 		setTimeout(function () {                             
 		  if (i < data.statuses.length) {
-		    showTweetInfo(data.statuses[i].text);
+		    showTweetInfo(data.statuses[i]);
 		  }
 		  i++;
 		  loopTweets(data);
 		}, 1000);
-		
+
 	}
 
 	loopTweets(data);

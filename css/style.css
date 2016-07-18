@@ -21,7 +21,7 @@ body {
 }
 
 
-.tweetIcon {
+.userIcon {
 
 	height: 70px;
 	width: 70px;
@@ -30,8 +30,8 @@ body {
 
 }
 
-.tweetIcon,
-.tweetNameContainer {
+.userIcon,
+.userNameContainer {
 	display: inline;
 }
 
