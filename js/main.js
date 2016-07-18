@@ -6,10 +6,13 @@ $(document).ready(function() {
 
 function showTweetInfo(tweet){
 
+	var displayDate = moment(tweet.created_at).format('h:mm A - D MMM YYYY');
+
+
 	$('.tweetName').text(tweet.user.name);
 	$('.tweetTag').text("@" + tweet.user.screen_name);
 	$('.tweetContent').text(tweet.text);
-	$('.tweetDateTime').text(tweet.created_at);
+	$('.tweetDateTime').text(displayDate);
 	$('.userIcon').attr('src', tweet.user.profile_image_url);
 
 }
