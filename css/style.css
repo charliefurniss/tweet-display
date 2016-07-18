@@ -1,3 +1,13 @@
 body {
-	background-color: blue;
+	background-color: black;
+}
+
+.mainContainer {
+	border-radius: 2px;
+	border: 2px solid;
+	background-color: #FFFFFF;
+	height: 300px;
+	width: 600px;
+	margin: 100px auto;
+
 }
