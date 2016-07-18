@@ -6,8 +6,9 @@ $(document).ready(function() {
 
 function showTweetInfo(tweet){
 
-	var displayDate = moment(tweet.created_at).format('h:mm A - D MMM YYYY');
+	findHashTag(tweet.text);
 
+	var displayDate = moment(tweet.created_at).format('h:mm A - D MMM YYYY');
 
 	$('.tweetName').text(tweet.user.name);
 	$('.tweetTag').text("@" + tweet.user.screen_name);
@@ -15,6 +16,19 @@ function showTweetInfo(tweet){
 	$('.tweetDateTime').text(displayDate);
 	$('.userIcon').attr('src', tweet.user.profile_image_url);
 
+}
+
+function findHashTag(text){
+	var tagsListArray = text.split(' ');
+	var array = [];
+	for (i = 0; i < tagsListArray.length; i ++){
+	    if(tagsListArray[i].indexOf('#') == 0){
+	      array.push(tagsListArray[i]);
+	      tagsListArray.splice(i, 1); 
+	    }
+	};
+	console.log(tagsListArray);
+	console.log(array);
 }
 
 function start(data) {
