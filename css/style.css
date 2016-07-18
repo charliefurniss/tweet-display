@@ -1,37 +1,64 @@
 body {
 
 	background-color: black;
-
+	font-family: "Helvetica Neue", Helvetica , Arial, sans-serif;
+	color: #292f33;
 }
 
 .mainContainer {
-
-	border-radius: 10px;
-	border: 2px solid;
 	background-color: #FFFFFF;
 	width: 600px;
 	margin: 100px auto;
+}
 
+.tweetHeadContainer {
+	overflow: auto;
+	margin-bottom: 15px;
 }
 
 .contentContainer {
-
-	padding: 20px 40px;
-
+	padding: 30px 40px;
 }
 
 
 .userIcon {
-
-	height: 70px;
-	width: 70px;
+	height: 48px;
+	width: 48px;
 	float: left;
-	margin-right: 20px;
-
+	margin-right: 10px;
+	border-radius: 5px;
 }
 
 .userIcon,
 .userNameContainer {
 	display: inline;
+}
+
+.tweetName {
+	margin: 0;
+}
+
+.tweetTag {
+	margin: 0;
+	font-size: 14px;
+}
+
+.tweetContent {
+	clear: both;
+	font-size: 26px;
+	line-height: 32px;
+	font-weight: 300;
+	letter-spacing: .01em;
+	margin: 0 0 10px 0;
+}
+
+.tweetDateTime, 
+.tweetTag {
+	color: #8899a6;
+}
+
+.tweetDateTime {
+	font-size: 13px;
+	margin: 0;
 }
 
