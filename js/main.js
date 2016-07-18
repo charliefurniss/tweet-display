@@ -22,15 +22,13 @@ function start(data) {
 	var i = 0;
 		
 	function loopTweets(data){
-
-		setTimeout(function () {                             
-		  if (i < data.statuses.length) {
-		    showTweetInfo(data.statuses[i]);
-		  }
+		if (i < data.statuses.length) {
+		  showTweetInfo(data.statuses[i]);
+		}
+		setTimeout(function () {
 		  i++;
 		  loopTweets(data);
 		}, 1000);
-
 	}
 
 	loopTweets(data);
