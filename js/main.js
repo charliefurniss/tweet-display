@@ -75,7 +75,7 @@ function init(data){
 		setTimeout(function(){
 		  i++;
 		  loopTweets(data);
-		}, 1000);
+		}, 10000);
 	
 	}
 
