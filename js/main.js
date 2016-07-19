@@ -1,24 +1,26 @@
 $(document).ready(function(){
-
+	
+	//accesses Twitter data stored in the Resource object
 	var resource = new Resource();
-
 	var data = resource.data;
-
-	start(data);
+	
+	init(data);
 
 });
 
 function showTweetInfo(tweet){
 
+	// formates the date/time info using moment.js
 	var displayDate = moment(tweet.created_at).format('h:mm A - D MMM YYYY');
 
+	// adds each part of the tweet to the relevant HTML tag 
 	$('.tweetName').text(tweet.user.name);
 	$('.tweetTag').text("@" + tweet.user.screen_name);
 	$('.tweetContent').text(tweet.text);
 	$('.tweetDateTime').text(displayDate);
 	$('.userIcon').attr('src', tweet.user.profile_image_url);
 
-	findHashTag(tweet.text);
+	createColouredText(tweet.text);
 
 }
 
@@ -34,11 +36,13 @@ function findHashTag(text){
 	    }
 	};
 	
-	return createColouredText(tagsArray);
+	return tagsArray;
 
 }
 
-function createColouredText(tagsArray){
+function createColouredText(text){
+
+	var tagsArray = findHashTag(text);
 	
 	for (i = 0; i < tagsArray.length; i++){
 		$('.tweetContent').mark(tagsArray[i], {
@@ -49,12 +53,13 @@ function createColouredText(tagsArray){
 
 }
 
-function start(data){
+function init(data){
 	
 	var i = 0;
 
 	var loopTweets;
-		
+
+	//iterates through array of tweets every ten seconds
 	loopTweets = function loopTweets(data){
 		
 		if (i < data.statuses.length) {
