@@ -20,19 +20,20 @@ function showTweetInfo(tweet){
 	$('.tweetDateTime').text(displayDate);
 	$('.userIcon').attr('src', tweet.user.profile_image_url);
 
-	createColouredText(tweet.text);
+	highlightHashTags(tweet.text);
 
 }
 
-function findHashTag(text){
+function findHashTags(text){
 	
+	// creates an array in which each word in the tweet is a separate string element
 	var textArray = text.split(' ');
 	var tagsArray = [];
 	
+	// iterates through the textArray, finds the hashtags and pushes them into an array
 	for (i = 0; i < textArray.length; i ++){
-	    if(textArray[i].indexOf('#') == 0){
+	    if (textArray[i].indexOf('#') == 0){
 	      tagsArray.push(textArray[i]);
-	      textArray.splice(i, 1); 
 	    }
 	};
 	
@@ -40,12 +41,17 @@ function findHashTag(text){
 
 }
 
-function createColouredText(text){
+function highlightHashTags(text){
 
-	var tagsArray = findHashTag(text);
+	// stores hashtags in a new array
+	var tagsArray = findHashTags(text);
 	
+	// replaces hashtags in the tweet text with a highlighted version
 	for (i = 0; i < tagsArray.length; i++){
-		$('.tweetContent').mark(tagsArray[i], {
+		var hashtag = tagsArray[i];
+		// uses mark.js to identify parts of the tweet text that match the hashtag 
+		// and then change their HTML tags
+		$('.tweetContent').mark(hashtag, {
 		    "element": "span",
 		    "className": "red"
 		});
@@ -59,7 +65,7 @@ function init(data){
 
 	var loopTweets;
 
-	//iterates through array of tweets every ten seconds
+	//iterates through array of tweets and displays one every ten seconds
 	loopTweets = function loopTweets(data){
 		
 		if (i < data.statuses.length) {
