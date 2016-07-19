@@ -6,8 +6,6 @@ $(document).ready(function() {
 
 function showTweetInfo(tweet){
 
-	findHashTag(tweet.text);
-
 	var displayDate = moment(tweet.created_at).format('h:mm A - D MMM YYYY');
 
 	$('.tweetName').text(tweet.user.name);
@@ -16,19 +14,31 @@ function showTweetInfo(tweet){
 	$('.tweetDateTime').text(displayDate);
 	$('.userIcon').attr('src', tweet.user.profile_image_url);
 
+	findHashTag(tweet.text);
+
 }
 
 function findHashTag(text){
-	var tagsListArray = text.split(' ');
-	var array = [];
-	for (i = 0; i < tagsListArray.length; i ++){
-	    if(tagsListArray[i].indexOf('#') == 0){
-	      array.push(tagsListArray[i]);
-	      tagsListArray.splice(i, 1); 
+	var textArray = text.split(' ');
+	var tagsArray = [];
+	
+	for (i = 0; i < textArray.length; i ++){
+	    if(textArray[i].indexOf('#') == 0){
+	      tagsArray.push(textArray[i]);
+	      textArray.splice(i, 1); 
 	    }
 	};
-	console.log(tagsListArray);
-	console.log(array);
+	
+	return createColouredText(tagsArray);
+}
+
+function createColouredText(tagsArray){
+	for (i = 0; i < tagsArray.length; i++){
+		$('.tweetContent').mark(tagsArray[i], {
+		    "element": "span",
+		    "className": "red"
+		});
+	}
 }
 
 function start(data) {

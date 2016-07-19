@@ -1,14 +1,17 @@
 body {
 
 	background-color: black;
-	font-family: "Helvetica Neue", Helvetica , Arial, sans-serif;
+	font-family: Helvetica Neue;
 	color: #292f33;
 }
 
 .mainContainer {
 	background-color: #FFFFFF;
 	width: 600px;
-	margin: 100px auto;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
 }
 
 .tweetHeadContainer {
@@ -19,7 +22,6 @@ body {
 .contentContainer {
 	padding: 30px 40px;
 }
-
 
 .userIcon {
 	height: 48px;
@@ -60,5 +62,9 @@ body {
 .tweetDateTime {
 	font-size: 13px;
 	margin: 0;
+}
+
+.red {
+	color: red;
 }
 
